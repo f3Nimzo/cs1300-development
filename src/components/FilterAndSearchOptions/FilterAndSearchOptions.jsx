@@ -9,6 +9,7 @@ const useStyles = makeStyles({
 		flexDirection: "row",
 		width: "100%",
 		justifyContent: "space-evenly",
+		marginBottom: "2%",
 	},
 	headerWithDropdownContainer: {
 		display: "flex",
