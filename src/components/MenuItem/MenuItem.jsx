@@ -5,12 +5,27 @@ import { Card, CardActionArea, CardActions, CardContent, CardMedia } from "@mate
 import WhatshotIcon from "@material-ui/icons/Whatshot";
 import LocalCafeIcon from "@material-ui/icons/LocalCafe";
 import FlashOnIcon from "@material-ui/icons/FlashOn";
+import AcUnitIcon from "@material-ui/icons/AcUnit";
+import EmojiFoodBeverageIcon from "@material-ui/icons/EmojiFoodBeverage";
+import EmojiObjectsIcon from "@material-ui/icons/EmojiObjects";
 import coffee from "../../static/A_small_cup_of_coffee.jfif";
+
+{/* 
+	IMenuItem {
+		image: {img}
+		temperature: ["Hot", "Cold"],
+		beverageType: ["Coffee", "Tea", "Energy Drink"],
+		caffeineType: ["Caffeinated", "Decaf"],
+		price: {price}
+	}
+*/}
 
 const useStyles = makeStyles({
 	card: {
-		width: "15%",
-		padding: 10 
+		width: "18%",
+		padding: 10,
+		marginRight: "5%",
+		marginBottom: "5%"
 	},
 	cardMedia: {
 		height: 140,
@@ -29,7 +44,7 @@ const useStyles = makeStyles({
 		alignItems: "center"
 	},
 	descriptionIcon: {
-		marginRight: "5%"
+		marginRight: "4%"
 	}
 });
 
@@ -37,50 +52,56 @@ export default function MenuItem(props) {
 	const classes = useStyles();
 
 	return (
-		<div>
 		<Card className={classes.card}>
 			<CardMedia 
 				component="img"
 				className={classes.cardMedia}
-				image={coffee}				
+				image={props.image}				
 			/>
-			<Typography variant="h5">Coffee</Typography>
+			<Typography variant="h5">{props.name}</Typography>
 
 			<div>
 				<div className={classes.drinkDescriptionRow}>
-					<WhatshotIcon className={classes.descriptionIcon} />
+					{props.temperature === "Hot" 
+						? <WhatshotIcon fontSize="small" className={classes.descriptionIcon} />
+						: <AcUnitIcon fontSize="small" className={classes.descriptionIcon} />
+					}
 					<Typography variant="body1" display="inline">
-						Hot
+						{props.temperature === "Hot Drinks Only" ? "Hot" : "Cold"}	
 					</Typography>
 				</div>
 			</div>
 
 			<div>
 				<div className={classes.drinkDescriptionRow}>
-					<LocalCafeIcon className={classes.descriptionIcon} />
+					{props.beverageType === "Coffee"
+						? <LocalCafeIcon fontSize="small" className={classes.descriptionIcon} />
+						: props.beverageType === "Energy Drink" 
+							? <EmojiObjectsIcon fontSize="small" className={classes.descriptionIcon} />
+							: <EmojiFoodBeverageIcon fontSize="small" className={classes.descriptionIcon} />
+					}
 					<Typography variant="body1" display="inline">
-						Coffee
+						{props.beverageType}	
 					</Typography>
 				</div>
 			</div>
 
 			<div>
 				<div className={classes.drinkDescriptionRow}>
-					<FlashOnIcon className={classes.descriptionIcon} />
+					<FlashOnIcon fontSize="small" className={classes.descriptionIcon} />
 					<Typography variant="body1" display="inline">
-						Caffeinated	
+						{props.caffeineType}	
 					</Typography>
 				</div>
 			</div>
 
 			<div className={classes.priceSection}>
-				<Typography variant="h5">$3.99</Typography>
+				<Typography variant="h5">${props.price}</Typography>
 				<Button size="small" variant="outlined" className={classes.addToCartButton}>
 					Add to Cart
 				</Button>
 			</div>
 
 		</Card>
-		</div>
 	);
 }

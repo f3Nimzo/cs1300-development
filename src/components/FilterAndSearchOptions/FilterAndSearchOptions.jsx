@@ -49,35 +49,41 @@ export default function FilterAndSearchOptions(props) {
 				<div className={classes.dropdownRowContainer}>
 					<FormControl size="small" variant="outlined" className={classes.formControl}>
 						<Select
-							value="Test"
-							renderValue={() => "Hot and Cold Drinks"}
+							value={props.temperatureFilter}
+							renderValue={() => props.temperatureFilter}
+							onChange={props.onTemperatureFilterChange}
 							className={classes.formSelect}
 						>
-							<MenuItem className={classes.menuItem} value="hot">Hot Drinks Only</MenuItem>
-							<MenuItem className={classes.menuItem} value="cold">Cold Drinks Only</MenuItem>
+							<MenuItem className={classes.menuItem} value="Hot and Cold Drinks">Hot and Cold Drinks</MenuItem>
+							<MenuItem className={classes.menuItem} value="Hot Drinks Only">Hot Drinks Only</MenuItem>
+							<MenuItem className={classes.menuItem} value="Cold Drinks Only">Cold Drinks Only</MenuItem>
 						</Select>
 					</FormControl>
 
 					<FormControl size="small" variant="outlined" className={classes.formControl}>
 						<Select
-							value="Test"
-							renderValue={() => "All Beverage Types"}
+							value={props.typeFilter}
+							renderValue={() => props.typeFilter}
+							onChange={props.onTypeFilterChange}
 							className={classes.formSelect}
 						>
-							<MenuItem className={classes.menuItem} value="hot">Coffee</MenuItem>
-							<MenuItem className={classes.menuItem} value="cold">Tea</MenuItem>
-							<MenuItem className={classes.menuItem} value="energy">Energy Drinks</MenuItem>
+							<MenuItem className={classes.menuItem} value="All Beverage Types">All Beverage Types</MenuItem>
+							<MenuItem className={classes.menuItem} value="Coffee">Coffee</MenuItem>
+							<MenuItem className={classes.menuItem} value="Tea">Tea</MenuItem>
+							<MenuItem className={classes.menuItem} value="Energy Drinks">Energy Drinks</MenuItem>
 						</Select>
 					</FormControl>
 
 					<FormControl size="small" variant="outlined" className={classes.formControl}>
 						<Select
-							value="Test"
-							renderValue={() => "All Beverage Types"}
+							value={props.caffeineFilter}
+							renderValue={() => props.caffeineFilter}
+							onChange={props.onCaffeineFilterChange}
 							className={classes.formSelect}
 						>
-							<MenuItem className={classes.menuItem} value="hot">Caffeinated</MenuItem>
-							<MenuItem className={classes.menuItem} value="cold">Decaf</MenuItem>
+							<MenuItem className={classes.menuItem} value="Caffeinated and Decaf">Caffeinated and Decaf</MenuItem>
+							<MenuItem className={classes.menuItem} value="Caffeinated">Caffeinated</MenuItem>
+							<MenuItem className={classes.menuItem} value="Decaf">Decaf</MenuItem>
 						</Select>
 					</FormControl>
 				</div>
