@@ -20,10 +20,21 @@ const useStyles = makeStyles({
 });
 
 export default function Menu() {
+	const [sortMethod, setSortMethod] = useState("Featured");
 	const [temperatureFilter, setTemperatureFilter] = useState("Hot and Cold Drinks");
 	const [typeFilter, setTypeFilter] = useState("All Beverage Types");
 	const [caffeineFilter, setCaffeineFilter] = useState("Caffeinated and Decaf");
 	const classes = useStyles();
+
+	const customSortComparator = (a, b) => {
+		if (sortMethod === "Lowest Price to Highest") {
+			return a.price - b.price;
+		}
+	};
+
+	const onSortMethodChange = (e) => {
+		setSortMethod(e.target.value);
+	}
 
 	const onTemperatureFilterChange = (e) => {
 		setTemperatureFilter(e.target.value);
@@ -77,6 +88,8 @@ export default function Menu() {
 	return (
 		<div className={classes.mainContainer}>
 			<FilterAndSearchOptions 
+				sortMethod={sortMethod}
+				onSortMethodChange={onSortMethodChange}
 				temperatureFilter={temperatureFilter}
 				typeFilter={typeFilter}
 				caffeineFilter={caffeineFilter}
@@ -85,7 +98,7 @@ export default function Menu() {
 				onCaffeineFilterChange={onCaffeineFilterChange}
 			/>
 			<div className={classes.menuItemsContainer}>
-				{inventory.map(item => 
+				{[...inventory].sort(customSortComparator).map(item => 
 					matchesAllFilters(item) && 
 					<MenuItem 
 						name={item.name}

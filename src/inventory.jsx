@@ -7,6 +7,8 @@ import matcha_latte from "../src/static/matcha_latte.jpg";
 import redbull from "../src/static/redbull.jpg";
 import nitro_cold_brew from "../src/static/nitro_cold_brew.jpg";
 import green_tea from "../src/static/green_tea.jpg";
+import coffee_decaf from "../src/static/coffee_decaf.jpg";
+import espresso from "../src/static/espresso.jpg";
 
 const inventory = [
 	{
@@ -78,6 +80,22 @@ const inventory = [
 		image: green_tea,
 		temperature: "Hot Drinks Only",
 		beverageType: "Tea",
+		caffeineType: "Caffeinated",
+		price: 1.99
+	}, 
+	{
+		name: "Decaf Coffee",
+		image: coffee_decaf,
+		temperature: "Hot Drinks Only",
+		beverageType: "Coffee",
+		caffeineType: "Decaf",
+		price: 1.99
+	},
+	{
+		name: "Espresso",
+		image: espresso,
+		temperature: "Hot Drinks Only",
+		beverageType: "Coffee",
 		caffeineType: "Caffeinated",
 		price: 1.99
 	}

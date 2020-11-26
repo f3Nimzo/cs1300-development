@@ -62,7 +62,7 @@ export default function MenuItem(props) {
 
 			<div>
 				<div className={classes.drinkDescriptionRow}>
-					{props.temperature === "Hot" 
+					{props.temperature === "Hot Drinks Only" 
 						? <WhatshotIcon fontSize="small" className={classes.descriptionIcon} />
 						: <AcUnitIcon fontSize="small" className={classes.descriptionIcon} />
 					}
@@ -76,7 +76,7 @@ export default function MenuItem(props) {
 				<div className={classes.drinkDescriptionRow}>
 					{props.beverageType === "Coffee"
 						? <LocalCafeIcon fontSize="small" className={classes.descriptionIcon} />
-						: props.beverageType === "Energy Drink" 
+						: props.beverageType === "Energy Drinks" 
 							? <EmojiObjectsIcon fontSize="small" className={classes.descriptionIcon} />
 							: <EmojiFoodBeverageIcon fontSize="small" className={classes.descriptionIcon} />
 					}

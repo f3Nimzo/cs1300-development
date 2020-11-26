@@ -90,15 +90,16 @@ export default function FilterAndSearchOptions(props) {
 			</div>
 
 			<div className={classes.headerWithDropdownContainer}>
-				<Typography variant="h5" className={classes.formRowHeader}>Sort</Typography>
+				<Typography variant="h5" className={classes.formRowHeader}>Sort By</Typography>
 				<FormControl size="small" variant="outlined" className={classes.formControl}>
 					<Select
-						value="Test"
-						renderValue={() => "Hot and Cold Drinks"}
+						value={props.sortMethod}
+						renderValue={() => props.sortMethod}
+						onChange={props.onSortMethodChange}
 						className={classes.formSelect}
 					>
-						<MenuItem className={classes.menuItem} value="hot">Hot Drinks Only</MenuItem>
-						<MenuItem className={classes.menuItem} value="cold">Cold Drinks Only</MenuItem>
+						<MenuItem className={classes.menuItem} value="Featured">Featured</MenuItem>
+						<MenuItem className={classes.menuItem} value="Lowest Price to Highest">Lowest Price to Highest</MenuItem>
 					</Select>
 				</FormControl>
 			</div>
