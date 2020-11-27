@@ -2,7 +2,6 @@ import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import { Typography } from "@material-ui/core";
 import CartItem from "../CartItem/CartItem";
-import inventory from "../../inventory";
 
 const useStyles = makeStyles({
 	mainContainer: {
@@ -47,10 +46,15 @@ export default function Cart(props) {
 				? <div className={classes.emptyCart}></div>
 				: 
 					<div className={classes.cartContainer}>
-						<Typography variant="h5">Total: $5.99</Typography>
+						<Typography variant="h5">
+							Total: {Object.values(props.cartItems).reduce((acc, item) => 
+							acc += (item.quantity * item.price), 0).toFixed(2)}
+						</Typography>
 						<div className={classes.cartItemsContainer}>
 							{Object.values(props.cartItems).map(item =>
 								<CartItem 
+									cartItems={props.cartItems}
+									setCartItems={props.setCartItems}
 									name={item.name}
 									image={item.image}
 									temperature={item.temperature}

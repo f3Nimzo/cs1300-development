@@ -60,6 +60,7 @@ export default function Home() {
 				/>
 				<Cart 
 					cartItems={cartItems}
+					setCartItems={setCartItems}
 				/>
 			</div>
 		</div>

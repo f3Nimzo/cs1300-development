@@ -43,6 +43,11 @@ const useStyles = makeStyles({
 export default function CartItem(props) {
 	const classes = useStyles();
 
+	const onRemoveFromCartButtonClick = () => {
+		const { [props.name]:_, ...updatedCartItems } = props.cartItems;
+		props.setCartItems(updatedCartItems);
+	}
+
 	return (
 		<Card className={classes.card}>
 			<CardMedia 
@@ -92,7 +97,12 @@ export default function CartItem(props) {
 					Qty: <span className={classes.quantity}>{props.quantity}</span>
 				</Typography>
 				<Typography variant="h6">${props.price}</Typography>
-				<Button size="small" variant="outlined" className={classes.addToCartButton}>
+				<Button 
+					size="small" 
+					variant="outlined" 
+					className={classes.addToCartButton}
+					onClick={onRemoveFromCartButtonClick}
+				>
 					Remove from Cart
 				</Button>
 			</div>
