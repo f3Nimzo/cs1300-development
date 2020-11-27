@@ -19,7 +19,7 @@ const useStyles = makeStyles({
 	}
 });
 
-export default function Menu() {
+export default function Menu(props) {
 	const [sortMethod, setSortMethod] = useState("Featured");
 	const [temperatureFilter, setTemperatureFilter] = useState("Hot and Cold Drinks");
 	const [typeFilter, setTypeFilter] = useState("All Beverage Types");
@@ -101,6 +101,8 @@ export default function Menu() {
 				{[...inventory].sort(customSortComparator).map(item => 
 					matchesAllFilters(item) && 
 					<MenuItem 
+						cartItems={props.cartItems}
+						setCartItems={props.setCartItems}
 						name={item.name}
 						image={item.image}
 						temperature={item.temperature}

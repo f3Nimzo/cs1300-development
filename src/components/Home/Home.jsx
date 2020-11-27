@@ -1,4 +1,4 @@
-import React from "react";
+import { React, useState }  from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import { Typography, AppBar } from "@material-ui/core";
 import Menu from "../Menu/Menu";
@@ -25,12 +25,11 @@ const useStyles = makeStyles({
 		display: "flex",
 		width: "100%",
 		flexDirection: "row",
-		alignItems: "center",
 		justifyContent: "space-evenly"
 	},
 	appBar: {
 		backgroundColor: "#f50a97",
-		width: "100vw",
+		width: "100%",
 		height: 10,
 		marginBottom: "2%"
 	},
@@ -41,6 +40,10 @@ const useStyles = makeStyles({
 });
 
 export default function Home() {
+	{/* 
+		ICartItems: { [itemName: string]: IMenuItem }
+	*/}
+	const [cartItems, setCartItems] = useState({});
 	const classes = useStyles();
 
 	return (
@@ -51,8 +54,13 @@ export default function Home() {
 			</div>
 			<AppBar elevation={0} position="relative" className={classes.appBar} />
 			<div className={classes.homeBodyContainer}>
-				<Menu />
-				<Cart />
+				<Menu 
+					cartItems={cartItems}
+					setCartItems={setCartItems}
+				/>
+				<Cart 
+					cartItems={cartItems}
+				/>
 			</div>
 		</div>
 	);

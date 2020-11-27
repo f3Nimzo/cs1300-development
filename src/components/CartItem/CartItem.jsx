@@ -9,22 +9,11 @@ import AcUnitIcon from "@material-ui/icons/AcUnit";
 import EmojiFoodBeverageIcon from "@material-ui/icons/EmojiFoodBeverage";
 import EmojiObjectsIcon from "@material-ui/icons/EmojiObjects";
 
-{/* 
-	IMenuItem {
-		image: {img}
-		temperature: ["Hot", "Cold"],
-		beverageType: ["Coffee", "Tea", "Energy Drink"],
-		caffeineType: ["Caffeinated", "Decaf"],
-		price: {price}
-	}
-*/}
-
 const useStyles = makeStyles({
 	card: {
-		width: "18%",
+		width: "8rem",
 		padding: 10,
-		marginRight: "5%",
-		marginBottom: "5%"
+		margin: "5%"
 	},
 	cardMedia: {
 		height: 140,
@@ -35,7 +24,8 @@ const useStyles = makeStyles({
 	},
 	addToCartButton: {
 		marginTop: "2%",
-		color: "#f50a97"
+		color: "#f50a97",
+		fontSize: 10 
 	},
 	drinkDescriptionRow: {
 		display: "flex",
@@ -44,38 +34,14 @@ const useStyles = makeStyles({
 	},
 	descriptionIcon: {
 		marginRight: "4%"
+	},
+	quantity: {
+		color: "#f50a97"
 	}
 });
 
-export default function MenuItem(props) {
+export default function CartItem(props) {
 	const classes = useStyles();
-
-	const onAddToCartButtonClick = () => {
-		if (props.cartItems.hasOwnProperty(props.name)) {
-			let itemWithUpdatedQuantity = props.cartItems[props.name];
-			itemWithUpdatedQuantity.quantity += 1;
-
-			props.setCartItems({
-				...props.cartItems,
-				[props.name]: itemWithUpdatedQuantity
-			});
-		} else {
-			const newItem = {
-				name: props.name,
-				image: props.image,
-				temperature: props.temperature,
-				beverageType: props.beverageType,
-				caffeineType: props.caffeineType,
-				price: props.price,
-				quantity: 1
-			};
-
-			props.setCartItems({
-				...props.cartItems,
-				[props.name]: newItem
-			});
-		}
-	};
 
 	return (
 		<Card className={classes.card}>
@@ -84,7 +50,7 @@ export default function MenuItem(props) {
 				className={classes.cardMedia}
 				image={props.image}				
 			/>
-			<Typography variant="h5">{props.name}</Typography>
+			<Typography variant="h6">{props.name}</Typography>
 
 			<div>
 				<div className={classes.drinkDescriptionRow}>
@@ -92,7 +58,7 @@ export default function MenuItem(props) {
 						? <WhatshotIcon fontSize="small" className={classes.descriptionIcon} />
 						: <AcUnitIcon fontSize="small" className={classes.descriptionIcon} />
 					}
-					<Typography variant="body1" display="inline">
+					<Typography variant="caption" display="inline">
 						{props.temperature === "Hot Drinks Only" ? "Hot" : "Cold"}	
 					</Typography>
 				</div>
@@ -106,7 +72,7 @@ export default function MenuItem(props) {
 							? <EmojiObjectsIcon fontSize="small" className={classes.descriptionIcon} />
 							: <EmojiFoodBeverageIcon fontSize="small" className={classes.descriptionIcon} />
 					}
-					<Typography variant="body1" display="inline">
+					<Typography variant="caption" display="inline">
 						{props.beverageType}	
 					</Typography>
 				</div>
@@ -115,21 +81,19 @@ export default function MenuItem(props) {
 			<div>
 				<div className={classes.drinkDescriptionRow}>
 					<FlashOnIcon fontSize="small" className={classes.descriptionIcon} />
-					<Typography variant="body1" display="inline">
+					<Typography variant="caption" display="inline">
 						{props.caffeineType}	
 					</Typography>
 				</div>
 			</div>
 
 			<div className={classes.priceSection}>
-				<Typography variant="h5">${props.price}</Typography>
-				<Button 
-					size="small" 
-					variant="outlined" 
-					className={classes.addToCartButton}
-					onClick={onAddToCartButtonClick}
-				>
-					Add to Cart
+				<Typography variant="h6">
+					Qty: <span className={classes.quantity}>{props.quantity}</span>
+				</Typography>
+				<Typography variant="h6">${props.price}</Typography>
+				<Button size="small" variant="outlined" className={classes.addToCartButton}>
+					Remove from Cart
 				</Button>
 			</div>
 
