@@ -9,6 +9,11 @@ import nitro_cold_brew from "../src/static/nitro_cold_brew.jpg";
 import green_tea from "../src/static/green_tea.jpg";
 import coffee_decaf from "../src/static/coffee_decaf.jpg";
 import espresso from "../src/static/espresso.jpg";
+import caffe_mocha from "../src/static/caffe_mocha.jpg";
+import monster from "../src/static/monster.jpg";
+import eggnog_latte from "../src/static/eggnog_latte.jpg";
+import orange_iced_tea from "../src/static/orange_iced_tea.jpg";
+import bubble_milk_tea from "../src/static/bubble_milk_tea.jpg";
 
 const inventory = [
 	{
@@ -98,6 +103,46 @@ const inventory = [
 		beverageType: "Coffee",
 		caffeineType: "Caffeinated",
 		price: 1.99
+	},
+	{
+		name: "Caffe Mocha",
+		image: caffe_mocha,
+		temperature: "Hot",
+		beverageType: "Coffee",
+		caffeineType: "Caffeinated",
+		price: 4.99
+	},
+	{
+		name: "Monster Energy Drink",
+		image: monster,
+		temperature: "Cold",
+		beverageType: "Energy Drinks",
+		caffeineType: "Caffeinated",
+		price: 2.99
+	},
+	{
+		name: "Eggnog Latte",
+		image: eggnog_latte,
+		temperature: "Hot",
+		beverageType: "Coffee",
+		caffeineType: "Decaf",
+		price: 6.99
+	},
+	{
+		name: "Orange Iced Tea",
+		image: orange_iced_tea,
+		temperature: "Cold",
+		beverageType: "Tea",
+		caffeineType: "Decaf",
+		price: 2.99
+	},
+	{
+		name: "Bubble Milk Tea",
+		image: bubble_milk_tea,
+		temperature: "Cold",
+		beverageType: "Tea",
+		caffeineType: "Caffeinated",
+		price: 3.99
 	}
 ];
 
