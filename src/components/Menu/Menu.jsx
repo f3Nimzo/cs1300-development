@@ -29,6 +29,22 @@ export default function Menu(props) {
 	const customSortComparator = (a, b) => {
 		if (sortMethod === "Lowest Price to Highest") {
 			return a.price - b.price;
+		} else if (sortMethod === "Highest Price to Lowest") {
+			return b.price - a.price;
+		} else if (sortMethod === "Alphabetical A-Z") {
+			if (a.name < b.name) {
+				return -1;
+			} else if (b.name < a.name) {
+				return 1;
+			}
+			return 0;
+		} else if (sortMethod === "Alphabetical Z-A") {
+			if (a.name < b.name) {
+				return 1;
+			} else if (b.name < a.name) {
+				return -1;
+			}
+			return 0;
 		}
 	};
 

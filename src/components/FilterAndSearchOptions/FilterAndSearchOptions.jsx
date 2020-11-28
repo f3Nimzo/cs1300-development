@@ -100,6 +100,9 @@ export default function FilterAndSearchOptions(props) {
 					>
 						<MenuItem className={classes.menuItem} value="Featured">Featured</MenuItem>
 						<MenuItem className={classes.menuItem} value="Lowest Price to Highest">Lowest Price to Highest</MenuItem>
+						<MenuItem className={classes.menuItem} value="Highest Price to Lowest">Highest Price to Lowest</MenuItem>
+						<MenuItem className={classes.menuItem} value="Alphabetical A-Z">Alphabetical A-Z</MenuItem>
+						<MenuItem className={classes.menuItem} value="Alphabetical Z-A">Alphabetical Z-A</MenuItem>
 					</Select>
 				</FormControl>
 			</div>
