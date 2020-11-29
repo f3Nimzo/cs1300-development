@@ -39,8 +39,10 @@ const useStyles = makeStyles({
 	}
 });
 
+// Component that contains the home page.
 export default function Home() {
 	{/* 
+		Format of CartItem objects:
 		ICartItems: { [itemName: string]: IMenuItem }
 	*/}
 	const [cartItems, setCartItems] = useState({});
@@ -54,10 +56,12 @@ export default function Home() {
 			</div>
 			<AppBar elevation={0} position="relative" className={classes.appBar} />
 			<div className={classes.homeBodyContainer}>
+				{/* Menu of items on the left-hand side */}
 				<Menu 
 					cartItems={cartItems}
 					setCartItems={setCartItems}
 				/>
+				{/* Cart on the right-hand side */}
 				<Cart 
 					cartItems={cartItems}
 					setCartItems={setCartItems}

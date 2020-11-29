@@ -19,6 +19,8 @@ const useStyles = makeStyles({
 	}
 });
 
+
+// Component that contains the list of menu items as well as filtering/sorting options
 export default function Menu(props) {
 	const [sortMethod, setSortMethod] = useState("Featured");
 	const [temperatureFilter, setTemperatureFilter] = useState("Hot and Cold Drinks");
@@ -26,6 +28,7 @@ export default function Menu(props) {
 	const [caffeineFilter, setCaffeineFilter] = useState("Caffeinated and Decaf");
 	const classes = useStyles();
 
+	// Comparator that sorts based on the currently selected method by the user.
 	const customSortComparator = (a, b) => {
 		if (sortMethod === "Lowest Price to Highest") {
 			return a.price - b.price;
@@ -48,6 +51,8 @@ export default function Menu(props) {
 		}
 	};
 
+	// Callbacks for the sorting and filtering dropdowns
+
 	const onSortMethodChange = (e) => {
 		setSortMethod(e.target.value);
 	}
@@ -63,6 +68,8 @@ export default function Menu(props) {
 	const onCaffeineFilterChange = (e) => {
 		setCaffeineFilter(e.target.value);
 	};
+
+	// Functions that determine if an item should be included based on the current filters.
 
 	const matchesTemperatureFilter = (menuItem) => {
 		if (temperatureFilter === "Hot and Cold Drinks" 

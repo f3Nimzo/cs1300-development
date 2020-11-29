@@ -47,9 +47,11 @@ const useStyles = makeStyles({
 	}
 });
 
+// Component containing a single menu item.
 export default function MenuItem(props) {
 	const classes = useStyles();
 
+	// Callback to update the cart when an item is added 
 	const onAddToCartButtonClick = () => {
 		if (props.cartItems.hasOwnProperty(props.name)) {
 			let itemWithUpdatedQuantity = props.cartItems[props.name];
@@ -87,6 +89,7 @@ export default function MenuItem(props) {
 			<Typography variant="h5">{props.name}</Typography>
 
 			<div>
+				{/* The menu item's drink temperature description */}
 				<div className={classes.drinkDescriptionRow}>
 					{props.temperature === "Hot Drinks Only" 
 						? <WhatshotIcon fontSize="small" className={classes.descriptionIcon} />
@@ -100,6 +103,7 @@ export default function MenuItem(props) {
 
 			<div>
 				<div className={classes.drinkDescriptionRow}>
+					{/* The menu item's drink type description */}
 					{props.beverageType === "Coffee"
 						? <LocalCafeIcon fontSize="small" className={classes.descriptionIcon} />
 						: props.beverageType === "Energy Drinks" 
@@ -114,6 +118,7 @@ export default function MenuItem(props) {
 
 			<div>
 				<div className={classes.drinkDescriptionRow}>
+					{/* The menu item's caffeine type description */}
 					<FlashOnIcon fontSize="small" className={classes.descriptionIcon} />
 					<Typography variant="body1" display="inline">
 						{props.caffeineType}	
@@ -121,6 +126,7 @@ export default function MenuItem(props) {
 				</div>
 			</div>
 
+			{/* Add to cart button */}
 			<div className={classes.priceSection}>
 				<Typography variant="h5">${props.price}</Typography>
 				<Button 

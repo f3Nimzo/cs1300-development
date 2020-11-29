@@ -39,6 +39,7 @@ const useStyles = makeStyles({
 	}
 });
 
+// Component containing the dropdown selectors for filtering and sorting options
 export default function FilterAndSearchOptions(props) {
 	const classes = useStyles();
 
@@ -47,6 +48,7 @@ export default function FilterAndSearchOptions(props) {
 			<div className={classes.headerWithDropdownContainer}>
 				<Typography variant="h5" className={classes.formRowHeader}>Filter</Typography>
 				<div className={classes.dropdownRowContainer}>
+					{/* Filter by beverage temperature */}
 					<FormControl size="small" variant="outlined" className={classes.formControl}>
 						<Select
 							value={props.temperatureFilter}
@@ -60,6 +62,7 @@ export default function FilterAndSearchOptions(props) {
 						</Select>
 					</FormControl>
 
+					{/* Filter by beverage type */}
 					<FormControl size="small" variant="outlined" className={classes.formControl}>
 						<Select
 							value={props.typeFilter}
@@ -74,6 +77,7 @@ export default function FilterAndSearchOptions(props) {
 						</Select>
 					</FormControl>
 
+					{/* Filter by caffeine type */}
 					<FormControl size="small" variant="outlined" className={classes.formControl}>
 						<Select
 							value={props.caffeineFilter}
@@ -89,6 +93,7 @@ export default function FilterAndSearchOptions(props) {
 				</div>
 			</div>
 
+			{/* Sorting Dropdown */}
 			<div className={classes.headerWithDropdownContainer}>
 				<Typography variant="h5" className={classes.formRowHeader}>Sort By</Typography>
 				<FormControl size="small" variant="outlined" className={classes.formControl}>

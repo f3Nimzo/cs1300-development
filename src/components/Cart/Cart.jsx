@@ -36,18 +36,20 @@ const useStyles = makeStyles({
 	}
 });
 
+// Component that represents the Cart for the user.
 export default function Cart(props) {
 	const classes = useStyles();
 
 	return (
 		<div className={classes.mainContainer}>
 			<Typography variant="h5">Cart</Typography>
+			{/* Display an empty cart if there are no items selected*/}
 			{Object.keys(props.cartItems).length === 0 
 				? <div className={classes.emptyCart}></div>
 				: 
 					<div className={classes.cartContainer}>
 						<Typography variant="h5">
-							Total: {Object.values(props.cartItems).reduce((acc, item) => 
+							Total: ${Object.values(props.cartItems).reduce((acc, item) => 
 							acc += (item.quantity * item.price), 0).toFixed(2)}
 						</Typography>
 						<div className={classes.cartItemsContainer}>

@@ -40,6 +40,7 @@ const useStyles = makeStyles({
 	}
 });
 
+// Component containing a single cart item.
 export default function CartItem(props) {
 	const classes = useStyles();
 

@@ -15,6 +15,7 @@ import eggnog_latte from "../src/static/eggnog_latte.jpg";
 import orange_iced_tea from "../src/static/orange_iced_tea.jpg";
 import bubble_milk_tea from "../src/static/bubble_milk_tea.jpg";
 
+// List of menu items to render
 const inventory = [
 	{
 		name: "Coffee",
