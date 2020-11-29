@@ -1,70 +1,39 @@
-# Getting Started with Create React App
+# Application Architecture
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Components
 
-## Available Scripts
+### Home
 
-In the project directory, you can run:
+The main page of the CIT Caffeine Shop application is the Home component, which contains the Menu and Cart components:
 
-### `yarn start`
+### Menu
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+The Menu component contains the list of menu items as well as the dropdown selectors for filtering and sorting. Each menu item is a MenuItem component, and the dropdown selectors are contained within the FilterAndSearchOptions component. 
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+### MenuItem
 
-### `yarn test`
+The MenuItem component consists of a Material UI Card that displays information about the item, such as fields that the sorting and filtering options use (e.g. "Caffeinated", "Tea", etc.). It also contains a button that allows the user to add it to the cart. 
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### FilterAndSortOptions
 
-### `yarn build`
+The FilterAndSortOptions component consists of three filter dropdown selectors as well as one sort dropdown selector. 
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### Cart 
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+The Cart component consists of a list of a list of cart items, where each cart item is a CartItem component. It also displays the total cost of the items. 
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### CartItem
 
-### `yarn eject`
+Like the MenuItem component, a CartItem component also displays a MaterialUI card, but the font is slightly smaller, and it contains "Quantity" and "Remove from Cart" options instead at the bottom. 
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+## Passing Data through the Components
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+The menu items are a list of JSON objects that are exported from the inventory.jsx file. The Menu component imports this list and maps across it to render a list of MenuItem components. 
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+The list of cart items are a state variable in the Home component. This list as well as its corresponding setter method are passed as props to both the Menu and Cart components, which further pass them as props to the MenuItem and CartItem components, respectively. 
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+## User Interaction and State Changes
 
-## Learn More
+The Menu component has four state variables that track the three filtering methods as well as the sorting method. When the user selects a filtering or sorting method from the dropdown, it triggers a state change to one of these variables, which causes the Menu component to re-render. When re-rendering the list of MenuItem components, the Menu component then sorts and filters the list based on the selected filters and sorting method. 
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `yarn build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+The Home component has a state variable that tracks the list of items that are in the cart. When the user clicks on the "Add to Cart" button on a MenuItem component, it updates this state variable through a callback that is passed down as a prop from the Home component. The same thing occurs when the user clicks on the "Remove from Cart" button on a CartItem component. 

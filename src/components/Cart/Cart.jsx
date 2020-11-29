@@ -49,7 +49,7 @@ export default function Cart(props) {
 				: 
 					<div className={classes.cartContainer}>
 						<Typography variant="h5">
-							Total: ${Object.values(props.cartItems).reduce((acc, item) => 
+							Total Cost: ${Object.values(props.cartItems).reduce((acc, item) => 
 							acc += (item.quantity * item.price), 0).toFixed(2)}
 						</Typography>
 						<div className={classes.cartItemsContainer}>
