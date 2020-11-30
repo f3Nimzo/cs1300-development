@@ -108,7 +108,7 @@ const inventory = [
 	{
 		name: "Caffe Mocha",
 		image: caffe_mocha,
-		temperature: "Hot",
+		temperature: "Hot Drinks Only",
 		beverageType: "Coffee",
 		caffeineType: "Caffeinated",
 		price: 4.99
@@ -116,7 +116,7 @@ const inventory = [
 	{
 		name: "Monster Energy Drink",
 		image: monster,
-		temperature: "Cold",
+		temperature: "Cold Drinks Only",
 		beverageType: "Energy Drinks",
 		caffeineType: "Caffeinated",
 		price: 2.99
@@ -124,7 +124,7 @@ const inventory = [
 	{
 		name: "Eggnog Latte",
 		image: eggnog_latte,
-		temperature: "Hot",
+		temperature: "Hot Drinks Only",
 		beverageType: "Coffee",
 		caffeineType: "Decaf",
 		price: 6.99
@@ -132,7 +132,7 @@ const inventory = [
 	{
 		name: "Orange Iced Tea",
 		image: orange_iced_tea,
-		temperature: "Cold",
+		temperature: "Cold Drinks Only",
 		beverageType: "Tea",
 		caffeineType: "Decaf",
 		price: 2.99
@@ -140,7 +140,7 @@ const inventory = [
 	{
 		name: "Bubble Milk Tea",
 		image: bubble_milk_tea,
-		temperature: "Cold",
+		temperature: "Cold Drinks Only",
 		beverageType: "Tea",
 		caffeineType: "Caffeinated",
 		price: 3.99
