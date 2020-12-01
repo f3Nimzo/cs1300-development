@@ -1,6 +1,6 @@
 import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
-import { Typography } from "@material-ui/core";
+import { Typography, Button } from "@material-ui/core";
 import CartItem from "../CartItem/CartItem";
 
 const useStyles = makeStyles({
@@ -33,6 +33,11 @@ const useStyles = makeStyles({
 		border: "3px solid #f50a97",
 		borderRadius: 10,
 		marginTop: "2%"
+	}, 
+	checkoutButton: {
+		marginTop: "2%",
+		color: "#f50a97",
+		fontSize: 10 
 	}
 });
 
@@ -52,6 +57,14 @@ export default function Cart(props) {
 							Total Cost: ${Object.values(props.cartItems).reduce((acc, item) => 
 							acc += (item.quantity * item.price), 0).toFixed(2)}
 						</Typography>
+						<Button
+							variant="outlined"
+							className={classes.checkoutButton}
+							onClick={() => alert(`Total Cost: $${Object.values(props.cartItems).reduce((acc, item) => 
+							acc += (item.quantity * item.price), 0).toFixed(2)}`)}
+						>
+							Checkout
+						</Button>
 						<div className={classes.cartItemsContainer}>
 							{Object.values(props.cartItems).map(item =>
 								<CartItem 
